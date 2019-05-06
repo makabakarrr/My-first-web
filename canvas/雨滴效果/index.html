@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+				background: white;
+				margin: 0;
+			}
+			#canvas{
+				display: block;
+				background:4682b4;
+			}
+		</style>
+	</head>
+	<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+		var w ,h;
+		var Rains = [];
+	//逻辑错误：只有当浏览器窗口发生变化时，才会改变canvas大小
+	//所以canvas大小在浏览器没有发生变化时为默认值
+		/*window.onresize = function(){
+			w=window.innerWidth;
+			h=window.innerHeight;
+			canvas.width = w;
+			canvas.height = h;
+		}*/
+	//逻辑缺陷：如果浏览器窗口没有发生变化，那么下面这个函数便没有执行结束，
+	//所以不会执行后面的函数，即没有雨滴出现。
+		/*~~function setSize(){
+				window.onresize = function(){
+					w=window.innerWidth;
+					h=window.innerHeight;
+					canvas.width = w;
+					canvas.height = h;
+				}
+		}();*/
+		~~function setSize(){
+			window.onresize = arguments.callee;
+			w=window.innerWidth;
+			h=window.innerHeight;
+			canvas.width = w;
+			canvas.height = h;
+		}();
+		function Rain (){}//构造函数
+		Rain.prototype = {
+			init:function(){
+				this.x = Math.floor(Math.random()*w);
+				this.y = 0;
+				this.r = 1;
+				this.color = '#ffffff';
+				this.yspeed = Math.random()*0.8+6;//下落速度
+				this.hMax = (0.7+Math.random()*0.25)*h;//下落的高度
+				this.rMax = 30+Math.random()*40;
+			},
+			draw:function(){
+				if(this.y<this.hMax){
+					ctx.fillStyle = this.color;
+					ctx.fillRect(this.x,this.y,2,10);//宽度为2高度为10
+				}else{
+					ctx.strokeStyle = this.color;
+					ctx.beginPath();
+					ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+					ctx.stroke();
+				}
+			},
+			move:function(){
+				if(this.y<this.hMax){
+					this.y = this.y+this.yspeed;
+				}else {
+					if(this.r < this.rMax){
+						this.r++;
+					}else{
+						this.init();
+					}
+				}
+				this.draw();
+				
+			}
+		}
+		function createRain(n){
+			for(var i=0;i<n;i++){
+				setTimeout(function(){
+					var rain = new Rain();
+					rain.init();
+					rain.draw();
+					Rains.push(rain);
+				},50*i);
+			}
+		}
+		
+		createRain(50);
+		setInterval(function(){
+			ctx.fillStyle = 'rgba(70,130,180,0.05)';
+			//ctx.fillStyle = 'rgba(109, 247, 132,0.05)';
+			ctx.fillRect(0,0,w,h);
+			for(var j=0;j<Rains.length;j++){
+				Rains[j].move();
+			}
+			//ctx.clearRect(0,0,w,h);
+		},1000/70);
+	</script>
+	</body>
+</html>

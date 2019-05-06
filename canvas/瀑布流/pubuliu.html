@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cloth</title>
+  <style>
+    *{
+  padding: 0;
+  margin: 0;
+}
+body{
+ background:#000;
+}   
+  </style>
+</head>
+<body>
+  <div id="container">
+  <canvas id="canvas"></canvas>
+</div>
+<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    var c = document.getElementById("canvas");
+	  var ctx = canvas.getContext("2d");
+
+//制作全屏
+	/*c.height = window.innerHeight;
+	c.width = window.innerWidth;*/
+	~~function setSize(){
+			window.onresize = arguments.callee;
+			w=window.innerWidth;
+			h=window.innerHeight;
+			c.width = w;
+			c.height = h;
+	}();
+  var str = [0,1]
+  var font_size = 20;
+  var columns = c.width/font_size; //雨的列数
+  //每列的一个数组
+  var drops = [];
+  for(var x = 0; x <=columns; x++)
+      drops[x] = 1; 
+
+  function draw(){
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, w, h);
+      
+      ctx.fillStyle = "#fff"; //字体颜色
+      ctx.font = font_size + "px arial";
+      //循环字体
+      for(var i = 0; i < drops.length; i++){
+          //随机汉字打印
+          var text = str[Math.floor(Math.random()*2)];
+          ctx.fillText(text, i*font_size, drops[i]*font_size);
+          
+          //在屏幕上划线后，把它的顶部随机发送到顶部
+          //将一个随机性添加到复位中，使分散在轴上的下降
+          if(drops[i]*font_size > c.height && Math.random() > 0.975)
+              drops[i] = 0;
+          
+          //增加的Y坐标
+          drops[i]++;
+      }
+  }
+
+  setInterval(draw, 33);
+</script>
+</body>
+</html>

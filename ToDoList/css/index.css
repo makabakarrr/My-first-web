@@ -1,0 +1,207 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+@media only screen and (max-width:375px ) {
+	html{
+		font-size: 24px;
+	}
+}
+body{
+	font-family: arial;
+}
+/*页眉样式*/
+header{
+	width: 100%;
+	height: 50px;
+	background-color: #000;
+}
+
+.prime{
+	width: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+
+h4{
+	color: lightgray;
+	line-height: 50px;
+	font-size: 25px;
+	font-weight: 100;
+}
+.form{
+	position: absolute;
+	right: 0;
+	top: 12px;
+}
+.form input{
+	line-height: 25px;
+	width: 300px;
+	padding-left: 10px;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 0 10px #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+/*中间部分样式*/
+.container{
+	background: #ededed;
+	height: 600px;
+	position: relative;
+}
+.list{
+	width: 600px;
+	margin: 0 auto;
+	color: black;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.list p{
+	display: inline;
+}
+#done_list,#todo_list{
+	padding-top: 20px;
+	position: relative;
+}
+.num{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: #CCCCCC;
+	border: 1px solid #D3D3D3;
+	border-radius: 12px;
+	box-sizing: border-box;
+	margin-left: 5px;
+	vertical-align: bottom;
+	font-size: 1rem;
+	text-align: center;
+	line-height: 24px;
+}
+.select{
+	position: absolute;
+	right: 0;
+	top: 30px;
+	font-size: 14px;
+}
+
+.select div{
+	display: inline-block;
+	margin-left: 20px;
+}
+.select button{
+	display: inline-block;
+	margin-right: 10px;
+	width: 50px;
+	height: 20px;
+}
+ol{
+	margin-top: 10px;
+}
+li{
+	list-style: none;
+	height: 32px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	background: ghostwhite;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	position: relative;
+}
+#done li{
+	background: rgba(220,220,220,.3);
+}
+li input{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	position: absolute;
+	left: 10px;
+	top: 6px;
+}
+li p{
+	display: inline;
+	padding-right: 3rem;
+	margin-left: 30px;
+	font-size: 1.1rem;
+	font-weight: 100;
+}
+li p input{
+	margin-left: 30px;
+	width: 80%;
+	height: 18px;
+	line-height: 10px;
+	padding-left: 5px;
+}
+
+li a{
+	display: inline-block;
+	position: absolute;
+	top: 8px;
+	right: 10px;
+	width: 18px;
+	height: 18px;
+	line-height: 15px;
+	font-size: 40px;
+	font-weight: 200;
+	color: red;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: gray;
+}
+
+/*页脚样式*/
+footer{
+	background: #fafafa;
+    border-top: 1px solid #e6e6e6;
+    display: block;
+    width:600px ;
+    height: 30px;
+    text-align: center;
+}
+.remark{
+	line-height: 30px
+}
+.remark span{
+	color: #ccc;
+	font-size: 15px;
+	;
+}
+@media screen and (min-width: 431px) and (max-width: 600px){
+	.prime{
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	footer{
+		width: 100%;
+	}
+	.list{
+		width: 90%;
+	}
+}
+@media screen and (max-width: 430px){
+	html{
+		font-size: 14px;
+	}
+	.prime{
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	footer{
+		width: 100%;
+	}
+	.list{
+		width: 90%;
+	}
+	.form{
+		width: 60%;
+	}
+	.form input{
+		width: 90%;
+		position: absolute;
+		right: 10px;
+	}
+}

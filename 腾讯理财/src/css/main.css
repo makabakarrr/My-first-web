@@ -1,0 +1,732 @@
+/*=======基本样式====*/
+
+html{
+    color: #707070;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #707070;
+    cursor: pointer;
+}
+li{
+    list-style: none;
+}
+/*********自定义样式***********/
+
+/********页眉样式**********/
+header{
+    width: 100%;
+    border-bottom: 2px solid #e5e5e5;
+}
+.top_nav li{
+    display: inline-block;
+    height: 35px;
+    line-height: 33px;
+    font-size: 1.2rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+a:hover,.top_nav li:nth-child(1){
+    color: #017bff;
+}
+.top_nav li:nth-child(1){
+    border-bottom: 3px solid #017bff;
+}
+.top_nav li:last-child{
+    border-left: 1px dotted #e5e5e5;
+}
+.top_nav span{
+    display: inline-block;
+    width: 1.625rem;
+    height:1.625rem;
+    margin-right: 1.25rem;
+    margin-left: 0.8rem;
+}
+.top_nav span img{
+    width:100%;
+    height: 100%;
+    vertical-align: text-bottom;
+}
+
+/****内容区样式******/
+
+/***广告图片区****/
+.banner{
+    width: 100%;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+}
+/****热门推荐区****/
+.recommend{
+    width: 100%;
+    text-align: center;
+}
+.data{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.data span{
+    font-size: 1.2rem;
+    color: #ff5d5b;
+}
+.recommend_container{
+    width: 100%;
+    padding-bottom: 10px;
+}
+.recommend_content{
+    display: inline-block;
+    width: calc(33% - 5px);
+    border: 1px solid #e5e5e5;
+    position: relative;
+}
+.tag{
+    width: 6rem;
+    height: 5.75rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../img/flower.png");
+    -webkit-background-size: 6rem 5.75rem;
+    background-size: 6rem 5.75rem;
+}
+.tag b{
+    display: block;
+    width: 3.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1.8rem;
+    margin-top:8px;
+    margin-right: 14px;
+    transform: rotate(-45deg);
+}
+
+.title{
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #555;
+    display: block;
+    margin-top:30px;
+    margin-bottom: 5px;
+}
+.rate{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff5d5b;
+    padding-bottom: 10px;
+}
+.recommend_content li{
+    font-size: 0.8rem;
+    list-style: none;
+    display: inline-block;
+    padding: 0 5px 0 5px;
+    margin: 0 7px;
+    border: 1px solid #f4aa69;
+    color: #f4aa69;
+
+}
+.btn{
+    width: 80%;
+    margin: 20px auto 7px auto;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ff5d5b;
+    color: #fff;
+}
+/******理财专区*******/
+    /****导航栏****/
+.main_content{
+    background-color: #f6f6f6;
+    padding-bottom: 20px;
+}
+.main_nav{
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px auto 10px auto;
+    padding-top: 15px;
+    position: relative;
+}
+.main_nav h1{
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #404040;
+    font-weight: normal;
+}
+.nav_content{
+    display: inline-block;
+    position: absolute;
+    left: 25%;
+    white-space: nowrap;
+}
+.nav_content li{
+    display: inline-block;
+    margin-left:4%;
+    width: 8.1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.nav_content li:nth-child(1),.nav_content li:hover{
+    border-bottom: 1px solid #ffa63c;
+}
+.nav_content li:nth-child(1) a,.nav_content a:hover{
+    color: #ffa63c;
+}
+/********货币基金********/
+.money_fund,.insurrance_product,.regular_product{
+    width: 90%;
+    margin: 0 auto 30px auto;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+}
+.money_title,.insurrance_title,.regular_title{
+    display: inline-block;
+    width: 14.6%;
+    height: 475px;
+    text-align: center;
+    background: #268eff url("../img/pig.jpg") no-repeat bottom right;
+    margin-right: -4px;
+    vertical-align: top;
+}
+.money_title b,.insurrance_title b,.regular_title b{
+    display: inline-block;
+    font-size: 28px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 700;
+}
+.money_title p,.insurrance_title p,.regular_title p{
+    color: #bdd6ff;
+    padding-top: 4px
+}
+.money_content{
+    float: right;
+    width: 85.4%;
+}
+.money_content ul{
+    height: 93px;
+    line-height: 93px;
+    padding-left: 50px;
+}
+.money_content ul+ul{
+    border-top: 1px solid #e5e5e5;
+}
+.money_content ul:nth-child(1){
+    height: 50px;
+    background: #f6f6f6;
+    line-height: 1;
+}
+.money_content ul:nth-child(1) li{
+    margin-top: 10px;
+}
+.money_content li{
+    display: inline-block;
+    width: calc(20% - 6px);
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+.money_content ul li:nth-child(1){
+    margin-right: 10%;
+}
+.money_content ul li:nth-child(2){
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ff5d5b;
+}
+.money_content ul.money_nav li{
+    color: #707070;
+    font-size: 16px;
+    font-weight: normal;
+}
+.money_content ul li:nth-child(5){
+    width: calc(10% - 6px);
+    border: 1px solid #ff5d5b;
+    border-radius: 5px;
+}
+/*******保险产品*******/
+
+.insurrance_title{
+    background: #ffa63c url("../img/protect.png") no-repeat bottom right;
+    height: 802px;
+}
+/****定期产品****/
+.regular_title{
+    background: #268eff url("../img/time.jpg") no-repeat bottom right;
+    height: 332px;
+}
+
+/********帮助栏*********/
+/******常见问题******/
+.help{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    background: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.regular{
+    float: left;
+    width: 40%;
+}
+.latest{
+    float: right;
+    width: 50%;
+    min-width: 306px;
+    margin-right: 20px;
+}
+.regular_problem,.latest_title{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d6d4d4;
+    margin-bottom: 10px;
+}
+.regular_problem h1,.latest_title h1{
+    display: inline-block;
+    color: #404040;
+    font-size: 22px;
+    font-weight: 400;
+}
+.regular_problem h1:before{
+    content: "";
+    display: inline-block;
+    width: 37px;
+    height: 31px;
+    background: url("../img/title.png") no-repeat;
+    background-position: 0 -66px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+/*****最新公告*****/
+.latest_title h1:before{
+    content: "";
+    display: inline-block;
+    width: 37px;
+    height: 31px;
+    background: url("../img/title.png") no-repeat;
+    background-position: 0 -28px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+.regular_problem a{
+    float: right;
+    color: #268eff;
+}
+.regular p,.latest p{
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+}
+.publish_data{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/*****合作机构*******/
+.footer{
+    background: #f6f6f6;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+.footer_container{
+    width: 90%;
+    margin: 0 auto;
+}
+.footer_container div{
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #d6d4d4;
+    color: #404040;
+    margin-bottom: 20px;
+}
+
+.footer li{
+    list-style: none;
+    display: inline-block;
+    width: 140px;
+    height: 46px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    background-image: url("../img/footer.png");
+}
+.footer li:nth-child(1){
+
+    background-position: 0 0;
+}
+.footer li:nth-child(2){
+
+    background-position: 0 -78px;
+}
+.footer li:nth-child(3){
+
+    background-position: 0 -156px;
+}
+.footer li:nth-child(4){
+    background-position: 0 -234px;
+}
+.footer li:nth-child(5){
+    background-position: 0 -312px;
+}
+.footer li:nth-child(6){
+    background-position: 0 -390px;
+}
+.footer li:nth-child(7){
+    background-position: 0 -468px;
+}
+.footer li:nth-child(8){
+    background-position: 0 -546px;
+}
+.footer li:nth-child(9){
+    background-position: 0 -624px;
+}
+.footer li:nth-child(10){
+    background-position: 0 -702px;
+}
+/******页脚******/
+footer{
+    background: #393e42;
+}
+.footer_content{
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+.info{
+    float: left;
+    height: 48px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+}
+.info a,.info a:hover{
+    color: #a6a4a7;
+}
+
+.info i{
+    display: inline-block;
+    width: 41px;
+    height: 38px;
+    background: url("../img/logo_footer.png");
+    margin-right: 10px;
+    vertical-align:text-bottom;
+}
+.info span,.contact span{
+    display: inline-block;
+    font-size: 1.5rem;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid #a6a4a7;
+}
+.artificial{
+    float: left;
+    height: 48px;
+    color: #a6a4a7;
+}
+.contact{
+    display: inline-block;
+}
+.contact i{
+    display: inline-block;
+    width: 41px;
+    height: 40px;
+    background: url("../img/i-phone.png");
+    margin-right: 10px;
+    vertical-align: text-bottom;
+}
+.contact_methods{
+    display: inline-block;
+    height: 48px;
+    vertical-align: middle;
+}
+.work_time{
+    float: right;
+    color: #a6a4a7;
+    line-height: 48px;
+}
+@media screen and (min-width: 801px){
+    header{
+        height: 73px;
+        min-width: 1200px;
+    }
+    .logo{
+        margin-top: 19px;
+        float: left;
+    }
+    .top_nav{
+        float: right;
+        margin-top: 38px;
+        margin-right: 20px;
+    }
+    .top_nav li{
+        margin-left: 2rem;
+    }
+
+/******内容区******/
+    .container{
+        min-width: 1200px;
+    }
+    /********热门推荐********/
+    .recommend_container {
+        width: 95%;
+        margin: 0 auto;
+    }
+/*****页脚******/
+    footer{
+        min-width: 1200px;
+    }
+}
+@media screen and (min-width: 510px) and (max-width: 800px) {
+    html{
+        font-size: 14px;
+    }
+    header{
+        width:100%;
+        text-align: center;
+    }
+    .logo{
+        margin:19px;
+    }
+    .top_nav{
+        width: 90%;
+        margin: 0 auto;
+        float: none;
+    }
+    .top_nav li{
+        width: calc(22.5% - 2px);
+    }
+   .top_nav span{
+       margin-left: 0.5rem;
+   }
+/***内容区***/
+    /*****热门推荐区*****/
+   .data{
+       -ms-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+       overflow: hidden;
+       white-space: nowrap;
+   }
+    .tag,.recommend_content ul {
+        display: none;
+    }
+    .title{
+        font-weight: 600;
+        margin: 10px auto 8px auto;
+    }
+    .rate{
+        font-size: 1.5rem;
+    }
+    .recommend_content li{
+        margin: 0 2px;
+    }
+    .btn{
+        width: 90%;
+        margin-top: 0px;
+    }
+    /****理财专区****/
+    .container,footer{
+        min-width: 650px;
+    }
+    .main_nav,.money_fund,.insurrance_product,.regular_product,.help,.footer_container,.footer_content{
+        width: 98%;
+    }
+    .nav_content{
+        left: 20%;
+    }
+
+    .money_title{
+        height: 294px;
+    }
+    .insurrance_title{
+        height: 538px;
+    }
+    .regular_title{
+        height: 233px;
+    }
+    .money_content ul{
+        height: 60px;
+        line-height: 60px;
+        padding-left: 0px;
+    }
+    .money_content ul li:nth-child(1){
+        margin-right: 0px;
+    }
+    .money_content li{
+        width: calc(22% - 6px);
+    }
+
+    .footer{
+        padding-bottom: 20px;
+    }
+    .footer li{
+        width: 80px;
+        height: 23px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        -webkit-background-size: 80% auto;
+        background-size: 80% auto;
+        background-repeat: no-repeat;
+    }
+    .footer li:nth-child(1){
+        background-position: 0 0;
+    }
+    .footer li:nth-child(2){
+        background-position: 0 -35px;
+    }
+    .footer li:nth-child(3){
+        background-position: 0 -70px;
+    }
+    .footer li:nth-child(4){
+        background-position: 0 -105px;
+    }
+    .footer li:nth-child(5){
+        background-position: 0 -139px;
+    }
+    .footer li:nth-child(6){
+        background-position: 0 -175px;
+    }
+    .footer li:nth-child(7){
+        background-position: 0 -210px;
+    }
+    .footer li:nth-child(8){
+        background-position: 0 -240px;
+    }
+    .footer li:nth-child(9){
+        background-position: 0 -280px;
+    }
+    .footer li:nth-child(10){
+        background-position: 0 -318px;
+    }
+
+}
+
+@media screen and (max-width: 620px){
+    .regular,.latest{
+        float: none;
+        width: 98%;
+        margin: 0 auto;
+    }
+    .regular p,.latest p{
+        height: 20px;
+        line-height: 20px;
+    }
+    .work_time{
+        float: left;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 509px){
+    html{
+        font-size: 10px;
+    }
+    header{
+        width:100%;
+        text-align: center;
+    }
+    .logo {
+        margin: 5px auto;
+        max-width: 342px;
+    }
+    .logo img{
+        width: 100%;
+        height: 100%;
+    }
+    .top_nav{
+        width: 90%;
+        margin: 0 auto;
+        float: none;
+    }
+    .top_nav li{
+        width: calc(22.5% - 2px);
+        font-size: 0.8rem;
+    }
+    .top_nav li:last-child{
+        min-width: 70px;
+    }
+    .top_nav span{
+        margin-left: 0.5rem;
+    }
+/****内容区****/
+    .main_nav,.money_fund,.insurrance_product,.regular_product,.help,.footer_container,.footer_content{
+        width: 98%;
+    }
+    /*****热门推荐*****/
+    .data{
+        display: none;
+    }
+
+    .recommend_content{
+        display: block;
+        width: 95%;
+        margin: 1rem auto 5px auto;
+    }
+    .title{
+        font-weight: 600;
+        font-size: 2.2rem;
+        margin: 10px auto 0px auto;
+    }
+    .rate{
+        padding-bottom: 0;
+    }
+    .tag b{
+        font-size: 1.5rem;
+    }
+    .btn{
+        display: none;
+    }
+    .recommend_content li{
+        margin-bottom: 10px;
+    }
+    /****理财专区****/
+    .main_nav{
+        height: 30px;
+        line-height: 30px;
+    }
+    .nav_content{
+        left: 20%;
+    }
+    .nav_content li{
+        width: 6.5rem;
+        margin-left: 0px;
+    }
+    .money_title{
+        height: 254px;
+    }
+    .insurrance_title{
+        height: 458px;
+    }
+    .regular_title{
+        height: 203px;
+    }
+    .money_content ul{
+        height: 50px;
+        line-height: 50px;
+        padding-left: 0px;
+    }
+    .money_content ul.money_nav li{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .money_content ul li:nth-child(1){
+        margin-right: 0px;
+        padding-top: 5px;
+    }
+    .money_content li{
+        width: calc(22% - 6px);
+        height: 15px;
+        line-height: 15px;
+    }
+    .money_content ul li:nth-child(5){
+        width: calc(15% - 6px);
+    }
+    .footer{
+        display: none;
+    }
+}

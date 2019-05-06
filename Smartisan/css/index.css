@@ -1,0 +1,1132 @@
+
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+@font-face {
+	font-family:SmartisanIconFont;
+	src: url(../icon/font/SmartisanIconFont.woff);
+}
+
+
+html{
+	line-height: 1.15;
+	webkit-text-size-adjust: 100%;
+}
+body{
+	font-family: Helvetica Neue,PingFang SC,Helvetica,Arial,
+		Hiragino Sans GB,Microsoft Yahei,\\5FAE\8F6F\96C5\9ED1,STHeiti,
+		\\534E\6587\7EC6\9ED1,sans-serif;
+	font-size: 14px;
+	color: #626262;
+	background:#ededed;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+/*顶部导航样式*/
+header{
+	background-color: #1a1a1a;
+	background-size: cover;
+	height: 100px;
+	min-width: 1220px;
+}
+.header{
+	width: 1220px;
+	height: 100px;
+	margin: 0 auto;
+	position: relative;
+}
+header a{
+	color: #c8c8c8;
+	text-decoration: none;/*删除链接自带下划线*/
+}
+
+a#logo{
+	float: left;
+	width: 50px;
+	height: 44px;
+	color: #666;
+	margin-left: -5px;
+	padding-top: 28px;
+	/*background: url(img/Smartisan1.png) no-repeat;*/
+	content: url(../img/Smartisan2.png);
+}
+
+
+
+nav ul{
+	float: right;
+	margin: 36px 181px 0 0;
+	line-height: 28px;
+	-webkit-padding-start: 40px;
+}
+nav ul li{
+	padding-left: 19px;   /*行元素只能改变padding-left,padding-right*/
+	padding-right: 19px;
+	text-align: center;
+	font-size: 14px;
+	list-style: none;
+	display: inline;
+}
+
+.icon{
+	position: absolute;
+	right: 15px;
+	top: 38px;
+	padding:0px 0px 0px 20px;
+	border-left: #333333 solid 0.5px;
+}
+.icon li{
+	display: inline-block;
+	padding-left: 11px;   /*行元素只能改变padding-left,padding-right*/
+	padding-right: 20px;
+}
+.icon li i{
+	color: #969696;
+	font-size: 18px;
+}
+.icon .num{
+	margin-right: -4px;
+	padding-left: 2px;
+	padding-right: 0;
+	color: #fff;
+}
+.icon li i.number{
+	background: #969696;
+    background-image: linear-gradient(#a4a4a4,#909090);
+    box-shadow: inset 0 0 1px #838383, 0 1px 2px #838383;
+    font-style: normal;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+a.selected,i.selected{
+	color: white;
+}
+a:hover,.icon li i:hover{
+	color: white;	
+}
+
+
+/*页面内容*/
+.container{
+	background: #ededed;
+	width: 100%;
+}
+/*1、商品内容导航栏*/
+
+.container_header{
+	height: 90px;
+	width: 1220px;
+	line-height: 28px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.container_header ul{
+	height: 28px;
+	line-height: 28px;
+	padding: 31px 0;
+}
+.container_header li{
+	font-size: 14px;
+	text-align:-webkit-match-parent ;
+	display: inline-block;	
+	position: relative;
+	padding-left: 2px;
+}
+/*在li标签前面插入内容“ ”，大小2px，颜色为 灰色，效果为在列表前加实心圆点*/
+.container_header li:before{
+	content: ' ';
+	position: absolute;
+	left: 0;
+	top: 13px;  /*相对div.shop*/
+	width: 2px;
+	height: 2px;
+	background: gray;
+	opacity: .3;/*设置元素的不透明级别*/
+}
+.container_header li:first-child {
+	color: #666;
+	font-weight: 700;
+	padding-left: 10px;
+}
+.container_header a{
+	color: #666;
+	padding:0 15px;
+}
+
+.container_header a:hover{
+	color: #5079d9;
+}
+/*搜索栏*/
+
+form{
+	flex: 2;
+	float: right;
+	height: 32px;
+	margin-left: 40px;
+	margin-right: 15px;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 16px;
+	background: #FFF;
+	box-sizing: border-box;
+	box-shadow: inset 0 1px 6px 0 rgba(0,0,0,.05);
+	position: relative;
+}
+form input{
+	display: inline-block;
+	width: 100%;
+	height: 32px;
+	line-height: 1.15;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-indent: 35px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+form button{
+	position: absolute;
+    top: 6px;
+    left: 10px;
+    height: 20px;
+    width: 20px;
+    color: #626262;
+    border: none;
+    cursor: pointer;
+    background-size: contain;
+    background-color: transparent;
+    -webkit-appearance: button;
+    background-image:url(../img/search.png);
+}
+.cue{
+	position: absolute;
+    top: 50%;
+    height: 20px;
+    line-height: 20px;
+    right: 0px;
+    margin-right: 7px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.cue a{
+	color: #3965cc;
+	font-size: 12px;
+    border: 1px solid #93b2f7;
+    border-radius: 10px;
+    padding: 0 10px;
+    background: #e5efff;
+    text-overflow: ellipsis;
+}
+
+/*轮播图样式*/
+.banner{
+	margin: 0 auto;
+	width: 1220px;
+	height: 492px;
+	box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 8px -6px rgba(0,0,0,.1);
+    overflow: hidden;
+	position: relative;
+}
+#bg{
+	background-color: #ededed;
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 1220px;
+    height: 492px;
+   
+}
+.show{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.show img{
+	position: absolute;
+	z-index: 1;
+	top: -28px;
+	left: 0;
+	width: 100%;
+	height: 100%
+}
+#dot{
+	position: absolute;
+	z-index: 2;
+	bottom: 40px;
+	left: 47%;
+}
+#dot li{
+	float: left;
+	width: 8px;
+	height: 8px;
+	background-color: darkgray;
+	border-radius: 4px;
+	border:rgba(0,0,0,.14);
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#dot .show{
+	background-color: lightgray;
+}
+
+/*横向图片列表*/
+.content_1{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	
+	-webkit-justify-content: center;
+	-webkit-flex-direction: row;
+	
+	width: 1220px;
+	height: 205px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: auto;
+	margin-right: auto;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.content_1-1{
+	position: relative;
+	flex: 1 1 auto;
+	border-right: 1px solid #eee;
+}
+
+.content_1-1 img{
+	width: 100%;
+	height: 100%;
+}
+/*鼠标移动到图片上方显示阴影样式方法：
+ 		将<a>置于图片上方，全透明；
+ 		当鼠标悬浮于<a>时，改变<a>的边框阴影
+ 		box-shadow参数: h:往右
+ 						v:往下
+ 						x:阴影尺寸
+ 						inset：将外阴影倒转变为内阴影
+ */
+.content_1-1 a{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 305px;
+	height: 205px;
+	background-color:rgba(255,255,255,.08);
+	z-index: 110;
+}
+.content_1-1 a:hover,.product a:hover{
+	box-shadow:inset 0 0 38px rgba(0,0,0,.18);
+}
+
+/*热门商品列表*/
+ 
+.content_2{
+	width: 1220px;
+	overflow: hidden;
+    position: relative;
+    z-index: 0;
+    margin: 25px auto 0 auto;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 8px;
+    background: #fff;
+}
+
+/*“热门商品栏顶部”*/
+.content_2_header,.header_3{
+	display: block;
+    position: relative;
+    font-size: 18px;
+    line-height: 60px;
+    color: #666;/*设置了字体颜色*/
+    background: #fafafa;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+h5{
+	margin-left: 25px;
+	font-weight: 400;
+	font-size: 100%;/*18px*/
+}
+.page,.brand{
+	position: absolute;
+	right: 10px;
+	top: 6px;
+	height: 60px;
+}
+.page a{
+	display: inline-block;
+	background-image: url(../img/right.png);
+	background-repeat: no-repeat;
+	width: 48px;
+	height: 48px;
+	color: #474747;
+	background-color: inherit;
+	cursor: pointer;
+	
+}
+.page a:first-child{
+	transform: rotateY(180deg);
+}
+.page a.fortable{
+	background-image: url(../img/fortable.png);
+	cursor: not-allowed;
+}
+
+
+.content_2_container,.container_7{
+	width: 2440px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-size: 0;
+}
+
+/*商品介绍栏：将大盒子分成四小块*/
+.phone,.part,.app{
+/*卧槽！！！！inline-block是有固定间距的！！！卧槽！
+ 此处的固定间距为一个空格，由html内容可知：
+ 		<div class = 'phone'>
+ 		.....
+ 		</div>
+ 		<div clas.........
+display:inline-block之后div变为行内元素 
+ 因为div之间有大量的空格（换行符），
+ html会将多个空格符压缩为一个显示，所以会显示间隙*/
+	display: inline-block;
+	height: 419px;
+	width: 304px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	cursor: pointer;
+    border-right: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+    vertical-align: top;
+}
+div.phone:hover,.part:hover{
+	box-shadow:inset 0 0 38px rgba(0,0,0,.16);
+}
+
+    /*商品图片显示区域*/
+.img{
+	
+    width: 216px;
+    height: 216px;
+    margin: 0 auto;
+    padding: 45px 0 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/*.phone .img img{
+我总算是想出了把不用的图片藏起来的办法！！！
+	display: none;
+}*/
+.img img{
+	display: block;
+	
+	width: 216px;
+	height: 216px;
+	overflow: hidden;
+	z-index: 1;
+}
+
+/*商品图片下方文字简介*/
+h4{
+	font-size: 14px;
+	text-align: center;
+	color: #333333;
+	line-height: 1.2;
+	font-weight: 700;
+	text-overflow: ellipsis;
+}
+h6{
+	font-size: 12px;
+	text-align: center;
+	color: #999;
+	line-height: 1.2;
+	font-weight: 400;
+	text-overflow: ellipsis;
+	padding-top: 15px;
+}
+.style{
+	margin-top: 15px;
+    text-align: center;
+    height: 14px;
+    z-index: 2;
+}
+.style ul{
+/*如果没有在ul上设置该属性，li元素float:left之后位于style左侧？？？*/
+/*解释：因为ul是块元素，块元素在默认情况下会继承父元素的宽度在
+ 	在转换成inline-block之后变成行内元素，由于.style设置了内容居中
+ 	所以li会居中显示*/
+	display: inline-block;
+	overflow: hidden;
+	list-style: none;
+}
+.style ul li{
+	 float: left;
+	margin: 0 5px;
+	z-index: 2;
+	
+}
+.outer{
+	width: 8px;
+    height: 8px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    padding: 2px;
+    transition: all .15s ease-out;
+}
+.style .outer img{
+	width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    display: block;
+}
+.active div{
+	box-shadow: inset 0 0 0 1px #b2b2b2;
+    border-color: #b2b2b2
+}
+/*价格栏*/
+.price{
+	/*font-size: 0;/*父元素字体大小设为0 子元素display:inline-block不会有间隙*/
+    font-family: Arial;
+    color: #d44d44;
+    font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+}
+.now_price{
+	display:inline-block;
+	
+}
+.origin_price{
+	position: relative;
+    display: inline-block;
+    padding-left: 10px;
+    font-weight: 400;
+    color: #ccc;
+}
+.now_price span{
+	font-size: 18px;
+    padding-left: 4px;
+}
+.origin_price span {
+	padding-left: 2px;
+    font-size: 12px;	
+}
+.origin_price :after{
+	position: absolute;
+    content: "";
+    border-top: 1px solid #ccc;
+    width: 85%;
+    top: 46%;
+    left: 9px;
+}
+.details{
+	color: #ccc;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	font-size: 16px;
+}
+
+
+/*坚果R1及官方配件*/
+
+.container_3,.container_4,.container_5,.container_6,.page1{
+	width: 1220px;
+	margin: 0 auto;
+	position: relative;
+	font-size: 0;
+}
+.brand a{
+	cursor: pointer;
+	margin: 0 15px;
+    font-size: 14px;
+    color: #666;
+    line-height: 60px;
+}
+.brand a:hover{
+	font-weight: 700;
+}
+
+.page1{
+	display: inline-block;
+}
+div.first{
+	display: inline-block;
+	height: 419px;
+	width: 609px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	cursor: pointer;
+    border-right: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+    vertical-align: top;
+}
+.first .img{
+	position: relative;
+	width: 609px;
+	height: 419px;
+	padding: 0;
+	overflow: hidden;
+}
+.first .img img{
+	width: 100%;
+	height: 100%;
+}
+#brand{
+	position: absolute;
+	right:25px;
+	top: 0;
+}
+#brand a{
+	display: inline-block;
+    position: relative;
+    margin: 0 15px;
+    font-size: 14px;
+    color: #666;
+    line-height: 60px;
+}
+
+
+/*锤子应用*/
+.all_app{
+	position: absolute;
+	right: 25px;
+	top: 0px;
+}
+.all_app a{
+	padding: 0 15px;
+    line-height: 34px;
+    background: #fafafa;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    margin: 0 15px;
+    font-size: 14px;
+    color: #666
+}
+.app{
+	box-sizing: border-box;
+	height: 315px;
+	text-align: center;
+    padding:  50px 30px 30px;
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;/*原因：后面platform里的span（display：inline-block）需要用到间距*/
+}
+.content{
+	overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.img_app{
+	background-position: 2px 0;
+	margin: 0 auto;
+    width: 96px;
+    height: 96px;
+    background-image: url(../img/all-app.png);
+    background-repeat: no-repeat;
+    background-size: auto 90px;
+}
+#img_app_2{
+	background-position: -189px 0;
+}
+#img_app_3{
+	background-position: -285px 0;
+}
+#app_4 .img_app{
+	background-position: -375px 0;
+}
+.describtion{
+	z-index: 1;
+    margin-top: 40px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.describtion p{
+	margin-top: 15px;
+    font-size: 12px;
+    font-weight: 200;
+}
+.describtion p span{
+	display: block;
+    overflow: hidden;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+}
+.describtion h6{
+	padding: 0;/*前面有设h6的padding-top*/
+	overflow: hidden;
+    font-size: 15px;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333;
+    font-weight: 700;
+}
+.platform{
+	position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    text-align: center;
+}
+.platform span{
+	display: inline-block;
+    position: relative;
+    margin: 0 5px;
+}
+.windows:before{
+	width: 16px;
+    height: 16px;
+    background-image: url(../img/windows.png);
+    display: block;
+    background-size: auto 16px;
+    content: " ";
+}
+.windows:after{
+	position: absolute;
+    right: -10px;
+    bottom: 4px;
+    width: 1px;
+    height: 8px;
+    background: #eee;
+    content: " ";
+    display: block;
+    background-size: auto 16px;
+    content: " ";
+}
+.ios:before{
+	width: 16px;
+    height: 16px;
+    background-image: url(../img/mac.png);
+    display: block;
+    background-size: auto 16px;
+    content: " ";
+}
+.android:before{
+	width: 16px;
+    height: 16px;
+    background-image: url(../img/android.png);
+    display: block;
+    background-size: auto 16px;
+    content: " ";
+}
+.android:after{
+	position: absolute;
+    right: -10px;
+    bottom: 4px;
+    width: 1px;
+    height: 8px;
+    background: #eee;
+    content: " ";
+    display: block;
+    background-size: auto 16px;
+    content: " ";
+}
+#app_4 .platform .android:after{
+	display: none;
+}
+.operation{
+	visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+    opacity: 0;
+}
+.buttons{
+	    padding: 82px 0 15px;
+}
+.app a{
+	    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.operation a{
+	display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #5079d9;
+    cursor: pointer;
+}
+.buttons a{
+	display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 10px 20px;
+    width: 210px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    background-color: #6f97e5;
+    background-image: linear-gradient(#6f97e5,#527ed9);
+    box-shadow: inset 0 1px 2px #7ea1e8;
+    text-shadow: #4f70b3 0 -1px 0;
+    cursor: pointer
+}
+.operation .qr_code{
+	margin: 64px auto 0;
+    box-sizing: border-box;
+    border: 1px solid #f7f7f7;
+    padding: 4px;
+    width: 120px;
+    height: 120px;
+    background: no-repeat;
+    background-size: contain;
+}
+#node{
+	background-image:url(../img/便签二维码.jpg);
+}
+#reader{
+	background-image:url(../img/锤子阅读.jpg);
+}
+#bbs{
+	background-image: url(../img/锤子科技论坛.jpg);
+}
+.operation p{
+	margin-top: 35px;
+    line-height: 1.2;
+}
+.operation a{
+	display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #5079D9;
+}
+/*论坛精选*/
+#forum{
+	
+	margin-bottom: 60px;
+}
+#forum .forum{
+	display: inline-block;
+	width: 304px;
+	margin: 0;
+	height: 321px;
+	padding: 0;
+	position: relative;
+	cursor: pointer;
+    border-right: 1px solid #efefef;
+    vertical-align: top;
+}
+
+.product{
+	margin: 30px;
+	padding-bottom: 30px;
+}
+.product img{
+	border-radius: 4px;
+    width: 246px;
+    height: 138px;
+    background: rgba(0,0,0,.1);
+}
+.product h5{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;/*将其设为水平排列避免内容过多导致换行*/
+    margin: 30px 0 12px;
+    color: #333;
+    overflow: hidden;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 700;
+    -webkit-line-clamp: 1;
+}
+.product p{
+	display: -webkit-box;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+    font-weight: 200;
+    line-height: 18px;
+}
+.product span{
+	display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5079d9;
+}
+.product a{
+	display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+footer{
+	background: #fafafa;
+    border-top: 1px solid #e6e6e6;
+    display: block;
+    min-width:1220px ;
+}
+.container_8{
+	width: 1220px;
+	margin: 0 auto;
+}
+.items{
+	height: 100px;
+    padding: 100px 0 32px;
+    border-bottom: 1px solid #e6e6e6;
+    position: relative;
+}
+table{
+	font-size: 12px;
+	display: inline-block;
+}
+th {
+	color: #646464;
+    font-weight: 400;
+    width: 149px;
+    padding-bottom: 14px;
+    text-align: left
+}
+th a{
+	color: #646464;
+}
+td {
+	color: #969696;
+	width: 149px;
+	height: 24px;
+	line-height: 1;
+}
+td a{
+	color: #969696;
+}
+th a:hover{
+	color: #5079d9;
+}
+td a:hover{
+	color: #5079d9;
+}
+ul.service{
+	display: inline-block;
+	position: absolute;
+    right: 0;
+    overflow: hidden;
+    line-height: 34px;
+}
+.service li{
+	    clear: both;
+    width: 241px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #c3c3c3;
+    text-align: right;
+}
+li.tel{
+	font-size: 30px;
+    line-height: 1;
+    cursor: default;
+    color: #646464;
+    top: -2px;
+    position: relative;
+}
+.service li a{
+	float: right;
+    width: 102px;
+    height: 32px;
+    line-height: 32px;
+    background: linear-gradient(#fcfcfc,#f5f5f5);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 0 0 26px;
+    margin-top: 8px;
+    text-align: left;
+    color: #5079d9;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+.service li a span{
+	font-size: 18px;
+    margin-right: 6px;
+    top: -1px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.language{
+	position: absolute;
+    right: -20px;
+    bottom: -50px;
+    z-index: 21;
+    background: hsla(0,0%,99%,0);
+    font-size: 12px;
+    line-height: 30px;
+    width: 118px;
+}
+.language ul{
+	    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 51px;
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 8px;
+}
+.language h3{
+	    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+}
+.language ul li{
+	border-bottom: 1px solid #ebebeb
+}
+.language ul a{
+	background: #fff;
+    position: relative;
+    display: block;
+    color: #666;
+    height: 31px;
+    line-height: 33px;
+    padding: 10px 20px 10px 44px;
+    border-radius: 8px 8px 0 0;
+}
+.language ul a:before{
+	background-image: url(../img/language.png);
+	background-position: 0 -30px
+	visibility: visible;
+    content: " ";;
+}
+h3 a{
+	    color: #45474b;
+    display: block;
+    height: 31px;
+    line-height: 33px;
+    padding: 10px 20px 10px 44px;
+    position: relative;
+    font-weight: 400;
+    font-size: 12px;
+}
+h3 a:before{
+	position: absolute;
+    content: " ";
+    width: 16px;
+    height: 15px;
+    left: 19px;
+    top: 18px;
+    background: url(../img/language.png);
+    background-size: 16px 80px;
+}
+.Smartisan-icon{
+	    position: absolute;
+    right: 18px;
+    margin-top: -1px;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    text-indent: 0;
+        display: inline-block;
+    font-family: SmartisanIconFont;
+    vertical-align: middle;
+}
+.Smartisan-icon:before{
+	    content: "Q";
+}
+.remarks{
+	color: #434d55;
+    font-size: 12px;
+    padding: 40px 0;
+}
+.remarks h4{
+	float: left;
+    height: 15px;
+    line-height: 15px;
+    color: #757575;
+    font-weight: 400;
+}
+.remarks h5{
+	float: left;
+    height: 15px;
+    line-height: 15px;
+    color: #757575;
+    margin-left: 3px;
+    font-weight: 400;
+}
+.remarks ul{
+	float: left;
+    margin: 0 0 0 12px;
+}
+.remarks ul li{
+	float: left;
+    line-height: 12px;
+    padding: 1px 10px 0;
+    border-left: 1px solid #ccc;
+}
+.remarks li a{
+	color: #5079D9;
+}
+.remarks h6{
+	clear: both;
+    padding: 10px 0 0;
+    height: 15px;
+    font-size: 0;
+    font-weight: 400;
+    text-align: left;
+}
+.remarks h6 a{
+	color: #bdbdbd;
+    font-size: 12px;
+    display: inline-block;
+    height: 12px;
+    line-height: 1;
+}
+h6 a span{
+	margin-right: 20px;
+}

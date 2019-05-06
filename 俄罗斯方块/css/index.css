@@ -1,0 +1,52 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.container{
+	width: 400px;
+	margin: 20px auto;
+	position: relative;
+}
+.game{
+	width: 200px;
+	height: 400px;
+	background-color: #fff;
+	border-left:3px solid grey;
+	border-right:3px solid grey;
+	border-bottom:3px solid grey;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.next{
+	width: 80px;
+	height: 80px;
+	border: 3px solid grey;
+	position: absolute;
+	top: 10px;
+	left: 250px;
+}
+.info{
+	position: absolute;
+	top: 100px;
+	left: 250px;
+}
+.none,.current,.done{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	box-sizing: border-box;
+	
+}
+.none{
+	background-color: #fff;
+}
+.current{
+	background-color: dodgerblue;
+	border:1px solid cornflowerblue;
+}
+.done{
+	background-color: grey;
+	border:1px solid dimgray;
+	
+}

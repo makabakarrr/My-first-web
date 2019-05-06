@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		body{
+			background: black;
+		}
+		#canvas{
+			background: white;
+		}
+		.choose{
+			background: gray;
+		}
+		
+	</style>
+</head>
+<body>
+	<input type="button" value="画笔" class="choose"/>
+	<input type="button" value="橡皮擦" /><br/>
+	<canvas id="canvas" width="400" height="400">
+		canvas not supported
+	</canvas>
+
+	<script>
+		var canvas = document.getElementById('canvas');
+		var button = document.getElementsByTagName("input");
+		var	ctx = canvas.getContext('2d');
+		var num = 0;
+		for(var i=0;i<button.length;i++){
+			button[i].index = i;//定义索引为i
+			button[i].onclick = function(){//该元素被点击就执行该函数
+				for(var i=0;i<button.length;i++){//将各元素的类名设为空
+					button[i].className = '';
+				}
+				this.className = 'choose';//再将被点击元素的类名设为‘choose’,更改样式
+				num = this.index;//将被点击元素的索引赋给num
+			}
+		}
+		canvas.onmousedown = function(ev){
+			var ev = ev || event;
+
+			var x = ev.pageX - canvas.offsetLeft;
+			var y = ev.pageY - canvas.offsetTop;
+			
+			ctx.beginPath();
+			ctx.moveTo(x,y);//鼠标按下的位置为起点
+			/*随着鼠标按下的移动位置确定x,y的值*/
+			canvas.onmousemove = function(ev){
+				var x = ev.pageX - canvas.offsetLeft;
+				var y = ev.pageY - canvas.offsetTop;
+				if(num == 0){
+					ctx.lineTo(x,y);//确定点的位置
+					ctx.stroke();//根据点描线
+				}else if(num ==1){
+					ctx.clearRect(x,y,20,20);//清除画布
+				}
+			};
+			canvas.onmouseup = function(){
+					canvas.onmousemove = null;
+					canvas.onmouseup = null;
+					ctx.closePath();//在鼠标点击处开始，松开处结束，闭合区域结束位置为鼠标松开的位置
+				};
+			return false; //阻止默认行为，防止鼠标按下后变成一杠
+		};
+		
+	</script>
+</body>
+
+</html>

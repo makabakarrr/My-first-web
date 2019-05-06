@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				background: black;
+			}
+			#canvas{
+			    background: firebrick;
+			}
+			div{
+				width: 900px;
+				margin-top: 10px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<canvas id="canvas" width="900" height="600"></canvas>
+		</div>
+		
+	
+		<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var width = canvas.width;
+			var height = canvas.height;
+			
+		
+			var blockSize = 25;//把画布看成由25*25的小方块构成
+			var widthInBlocks = width/blockSize;
+			var heightInBlocks = height/blockSize;
+		
+
+			var flag = 0;//游戏正在进行
+			var gameFlag = 0;//游戏没有结束
+			
+			var score = 0;
+			var drawBorder = function(){
+				ctx.lineWidth = 10;
+				ctx.strokeStyle = 'darkred';
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(900,0);
+				ctx.lineTo(900,600);
+				ctx.lineTo(0,600);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			var drawScore = function(){
+				ctx.font = '20px Comic Scans Ms';
+				ctx.textAlign = 'left';
+				ctx.textBaseline = 'top';
+				ctx.fillText('Score:'+score,10,10);
+			}
+			var gameOver = function(){
+				clearInterval(interval);
+				ctx.clearRect(0,0,width,height);
+				ctx.font = '100px Comic Scans Ms';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.fillText('Game Over !',width/2,height/2-60);
+				ctx.font = '20px Comic Scans Ms';
+				ctx.fillStyle = 'yellow';
+				ctx.fillText('Score:'+score,width/2,height/2+30);
+			}
+			var stop = function(){
+				clearInterval(interval);
+				//ctx.clearRect(0,0,width,height);
+				ctx.font = '100px Comic Scans Ms';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.fillText('STOP !',width/2,height/2-60);
+			}
+		
+			
+			var Block = function(col,row){
+				this.col = col;
+				this.row = row;
+			}
+		
+		//放置金币
+			
+			Block.prototype.drawJinB = function(){
+				var x = this.col * blockSize + blockSize/2;
+				var y = this.row * blockSize + blockSize/2;
+				ctx.beginPath();
+				ctx.arc(x,y,blockSize/2,0,2*Math.PI);
+				ctx.closePath();
+				ctx.fillStyle = 'gold';
+				ctx.fill();
+			}
+		//原型函数：加载蛇头图片
+			Block.prototype.drawSnak = function(){
+				var x = this.col * blockSize;
+				var y = this.row * blockSize;
+				var img = new Image();
+				img.src = 'img/snak1.png';
+				img.onload = function(){
+					ctx.drawImage(img,x,y,blockSize,blockSize);
+				}
+			}
+		//添加画圆圈的方法.drawCircle()
+			Block.prototype.drawCircle = function(){
+				var x = this.col * blockSize+blockSize/2;
+				var y = this.row * blockSize+blockSize/2;
+				ctx.beginPath();
+				ctx.arc(x,y,blockSize/2,0,2*Math.PI);
+				ctx.closePath();
+				ctx.fillStyle = 'burlywood';
+				ctx.fill();
+			}
+		//原型函数：检测两个方块的位置是否相同，相同返回1不同返回0；
+			Block.prototype.equal = function(otherBlock){
+				return this.col === otherBlock.col && 
+					this.row === otherBlock.row;
+			}
+			
+		//创建Snake构建函数
+			var Snak = function(){
+				this.segments = [
+					new Block(12,5),
+					new Block(13,5),
+					new Block(14,5),
+					new Block(15,5)
+				];
+				this.direction = 'left';
+				this.nextDirection = 'left';
+			}
+		
+		
+		//原型函数：画出蛇头蛇身；
+			Snak.prototype.draw = function(){
+				this.segments[0].drawSnak();
+				for(var i=1;i<this.segments.length;i++){
+					this.segments[i].drawCircle();
+				}
+			}
+		//原型函数：设置方向
+			Snak.prototype.setDirection = function(newDirection){
+				if(this.direction === 'left' && newDirection === 'right'){
+					return;
+				}else if(this.direction === 'right' && newDirection === 'left'){
+					return;
+				}else if(this.direction === 'up' && newDirection === 'down'){
+					return;
+				}else if(this.direction === 'down' && newDirection === 'up'){
+					return;
+				}
+				this.nextDirection = newDirection;
+			}
+		//碰撞检测
+			Snak.prototype.checkWallCollision = function(newhead){
+				var leftCollision = ( newhead.col=== 0 && this.direction === 'left');
+				var rightCollision = (newhead.col === widthInBlocks-1 && this.direction === 'right');
+				var upCollision = (newhead.row === 0 && this.direction === 'up');
+				var downCollision = (newhead.row === heightInBlocks-1 && this.direction === 'down');
+				
+				var wallCollision = leftCollision || rightCollision || 
+					upCollision || downCollision;
+				return wallCollision;	
+			}
+			Snak.prototype.checkSelfCollision = function(Newhead){
+				var selfCollision = false;
+				for(var i=0;i<this.segments.length;i++){
+					if(Newhead.equal(this.segments[i])){
+						selfCollision = true;
+					}
+				}
+				return selfCollision;
+			}
+			
+			
+		//蛇的移动
+			Snak.prototype.move = function(){
+				var head = this.segments[0];
+				var newHead;
+				
+				this.direction = this.nextDirection;
+				
+				if(this.direction === 'right'){
+					newHead = new Block(head.col+1,head.row);
+				}else if(this.direction === 'left'){
+					newHead = new Block(head.col-1,head.row);
+				}else if(this.direction === 'up'){
+					newHead = new Block(head.col,head.row-1)
+				}else if(this.direction === 'down'){
+					newHead = new Block(head.col,head.row+1);
+				}
+				
+				if(this.checkWallCollision(head)||this.checkSelfCollision(newHead)){
+					gameOver();
+					gameFlag = 1;
+					return;
+				}
+				this.segments.unshift(newHead);
+				if(newHead.equal(money.position)){
+					score++;
+					money.move();
+				}else {
+					this.segments.pop();
+				}
+			}
+			
+			var Money = function(){
+				this.position = new Block(Math.floor(Math.random()*36),Math.floor(Math.random()*23+1));
+			}
+			Money.prototype.draw = function(){
+				this.position.drawJinB();
+			}
+			Money.prototype.move = function(){
+				this.position = new Block(Math.floor(Math.random()*36),Math.floor(Math.random()*23+1));
+			}
+			
+			//var money = new Block(Math.floor(Math.random()*36),Math.floor(Math.random()*24));
+			var snak = new Snak();
+			var money = new Money();
+			
+			
+			
+			
+			//开始游戏界面
+			
+				ctx.font = '100px Comic Scans Ms';
+				ctx.textAlign = 'center';
+				ctx.textBaseline = 'middle';
+				ctx.fillStyle = 'khaki'
+				ctx.fillText('Begin ?',440,240);
+				ctx.font = '20px Comic Scans Ms';
+				ctx.fillText('Please click on the screen with the mouse !',450,350);
+			
+			
+			
+			var directions = {
+				37:'left',
+				38:'up',
+				39:'right',
+				40:'down',
+				32: 'begin'
+			};
+			$('body').keydown(function(ev){
+				var newDirection = directions[ev.keyCode];
+				if(newDirection !== undefined){
+					snak.setDirection(newDirection);
+				}
+				
+			})	
+
+
+			
+			$('canvas').click(function(){
+				if(flag == 0){
+					interval = setInterval(function(){
+						ctx.clearRect(0,0,width,height);
+						//drawBorder();
+						snak.move();
+						snak.draw();
+						money.draw();
+						drawScore();
+					},200);
+					flag = 1;
+				}else if(flag == 1 && gameFlag != 1){
+					stop();
+					flag = 0;
+				}
+
+			})
+			
+			
+		
+		</script>
+	</body>
+</html>
